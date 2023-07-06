@@ -10,6 +10,7 @@ import { SharedModule } from './shared/shared.module';
 import { HttpHeaderInterceptor } from './core/interceptors/http-header.interceptor';
 import { HttpErrorInterceptor } from './core/interceptors/http-error.interceptor';
 import { ToastNoAnimationModule, ToastrModule, ToastrService } from 'ngx-toastr';
+import { LoadingInterceptor } from './core/interceptors/http-loading.interceptor';
 
 @NgModule({
   declarations: [AppComponent],
@@ -38,6 +39,11 @@ import { ToastNoAnimationModule, ToastrModule, ToastrService } from 'ngx-toastr'
       multi: true,
       deps: [],
     },
+    {
+      provide: HTTP_INTERCEPTORS,
+      useClass: LoadingInterceptor,
+      multi: true
+    }
   ],
   bootstrap: [AppComponent],
 })

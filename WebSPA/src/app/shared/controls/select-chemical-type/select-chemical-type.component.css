@@ -1,0 +1,9 @@
+:host.ng-invalid.ng-touched {
+  ::ng-deep ng-select div.ng-select-container {
+    border: 1px #f1416c solid !important;
+  }
+}
+
+:host ng-select {
+  font-size: 1.4rem;
+}

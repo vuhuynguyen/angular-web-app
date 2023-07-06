@@ -1,0 +1,68 @@
+<div class="new-chemical">
+  <div class="card">
+    <div class="card-header bg-white">
+      <div class="card-title fw-bold">Add new chemical</div>
+    </div>
+    <div class="card-body">
+      <form [formGroup]="mainForm">
+        <div class="fv-row form-group mb-3">
+          <label class="form-label">Chemical Name</label>
+          <input class="form-control me-3" formControlName="name" />
+          <app-validation-message
+            [for]="mainForm!.get('name')"
+            [validationError]="validationError"
+          >
+          </app-validation-message>
+        </div>
+
+        <div class="fv-row form-group mb-3">
+          <label class="form-label">Chemical Type</label>
+          <app-select-chemical-type
+            [control]="mainForm.get('chemicalTypeId')"
+            (onChange)="onChemicalTypeChange($event)"
+          ></app-select-chemical-type>
+          <app-validation-message
+            [for]="mainForm!.get('chemicalTypeId')"
+            [validationError]="validationError"
+          >
+          </app-validation-message>
+        </div>
+
+        <div class="fv-row form-group mb-3">
+          <label class="form-label">Active Ingredient:</label>
+          <input class="form-control me-3" formControlName="activeIngredient" />
+        </div>
+
+        <div class="fv-row form-group mb-3">
+          <label class="form-label">Pre Harvest Interval In Days:</label>
+          <input
+            class="form-control me-3"
+            formControlName="preHarvestIntervalInDays"
+          />
+        </div>
+      </form>
+    </div>
+    <div
+      class="d-flex flex-sm-row flex-column justify-content-end card-footer bg-white"
+    >
+      <div>
+        <button
+          class="btn btn-secondary me-1 fs-5"
+          ngbAutofocus
+          (click)="dismiss()"
+        >
+          Cancel
+        </button>
+      </div>
+      <div>
+        <button
+          class="btn btn-primary fs-5"
+          type="button"
+          (click)="addChemical()"
+        >
+          Save
+        </button>
+      </div>
+    </div>
+  </div>
+</div>

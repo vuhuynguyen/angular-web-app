@@ -1,0 +1,25 @@
+$white: #ffffff !default;
+$black: #333333 !default;
+$primary-color: #df1d00;
+
+//gray
+$gray-700-dark: #828282;
+$gray-800-dark: #bdbdbd;
+$gray-900-dark: #ffffff;
+
+$gray-900: #181c32 !default;
+
+//font
+$font-weight-light: 300;
+$font-weight-normal: 400;
+$font-weight-semibold: 500;
+$font-weight-bold: 600;
+$font-weight-bolder: 700;
+
+// Forms
+
+$form-label-margin-bottom: 1rem;
+$form-label-font-size: 1.4rem;
+$form-label-font-weight: 500;
+$form-label-color: $gray-900;
+$form-label-color-dark: $gray-900-dark;

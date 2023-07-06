@@ -1,0 +1,16 @@
+<ng-select
+  [items]="list$ | async"
+  [multiple]="false"
+  bindLabel="name"
+  [hideSelected]="false"
+  [trackByFn]="trackByFn"
+  [loading]="loading"
+  [typeahead]="input$"
+  [(ngModel)]="selected"
+  [disabled]="disabled"
+  [clearable]="clearable"
+  (change)="onChangeDropdown($event)"
+  (blur)="onBlurSelect()"
+  typeToSearchText="Type to search"
+>
+</ng-select>

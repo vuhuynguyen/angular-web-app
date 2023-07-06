@@ -1,0 +1,154 @@
+.page-overview {
+  .card {
+    border: none;
+    margin: 1.5rem;
+    padding: 1rem;
+
+    .card-header {
+      background-color: $white;
+      border-bottom: 2px $primary-color solid !important;
+
+      .card-title {
+        font-size: 2rem;
+        font-weight: $font-weight-bold;
+        color: $black;
+        margin-left: 1.5rem;
+        margin-right: 1.5rem;
+        margin-bottom: 0;
+      }
+
+      .card-sub-title {
+        color: $gray-700-dark;
+        font-size: 1.4rem;
+      }
+    }
+
+    .card-body {
+      padding: 0 3.5rem 0 3.5rem;
+    }
+  }
+
+  .custom-table-striped {
+    thead {
+      tr {
+        text-transform: uppercase;
+        white-space: nowrap;
+        th {
+          font-size: 1.4rem;
+          font-weight: $font-weight-bolder;
+          color: #333333;
+          padding: 1.5rem;
+        }
+      }
+    }
+
+    tbody {
+      tr:nth-child(odd) {
+        background: #f9f9f9 !important;
+      }
+
+      tr {
+        border: hidden;
+        vertical-align: middle;
+
+        td {
+          padding: 1.5rem;
+        }
+      }
+    }
+  }
+
+  .table-paginator {
+    margin-top: 1.5rem;
+    margin-bottom: 1.5rem;
+    &__pagination {
+      margin-bottom: -1.5rem;
+
+      .page-item:not(:first-child) .page-link {
+        margin: 0 0.3rem 0 0.3rem;
+        border-radius: 4px;
+      }
+
+      .page-item.disabled:not(:first-child):not(:last-child) .page-link {
+        border: hidden;
+        font-size: 1.4rem;
+        margin: 0 0.5rem 0 0.5rem;
+      }
+
+      .page-link {
+        outline: none;
+        font-size: 1.4rem;
+        color: $gray-700-dark;
+        background-color: $white;
+        padding: 0.4rem 1.2rem;
+        box-shadow: none;
+        outline: none;
+      }
+
+      .page-link:focus {
+        outline: none;
+      }
+
+      .active > .page-link,
+      .page-link.active {
+        color: $primary-color;
+        border-color: $primary-color;
+      }
+    }
+    &__page-size-selector {
+      .page-size-selector {
+        &__title {
+          color: $gray-800-dark;
+          font-size: 1.4rem;
+          margin: auto 1rem auto 1rem;
+          white-space: nowrap;
+        }
+
+        &__dropdown {
+          color: $black;
+          border: hidden;
+          border-bottom: 2px $primary-color solid !important;
+          box-shadow: none;
+          outline: none;
+        }
+      }
+    }
+  }
+}
+
+@media only screen and (max-width: 575px) {
+  .page-overview {
+    .card {
+      .card-header {
+        .card-sub-title {
+          font-size: 1.3rem;
+        }
+      }
+
+      .card-body {
+        padding: 0;
+      }
+    }
+
+    .table-paginator {
+      &__pagination {
+        .page-link {
+          padding: 0.2rem 1.1rem;
+        }
+
+        .page-item:not(:first-child) .page-link {
+          margin: 0 0.2rem 0 0.1rem;
+          border-radius: 4px;
+        }
+
+        .page-item.disabled:not(:first-child):not(:last-child) .page-link {
+          margin: 0;
+        }
+      }
+
+      &__page-size-selector {
+        margin-top: 1.5rem;
+      }
+    }
+  }
+}

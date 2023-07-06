@@ -1,0 +1,13 @@
+@import "../../../../assets/scss/core/variable";
+
+.card {
+  border: none;
+  .card-header {
+    border-bottom: 1px $gray-800-dark solid;
+  }
+
+  .card-footer {
+    border: none;
+    margin-bottom: 1rem;
+  }
+}

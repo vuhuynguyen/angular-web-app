@@ -1,0 +1,98 @@
+<div class="page-overview">
+  <div class="card">
+    <div class="card-header">
+      <div
+        class="d-flex flex-sm-row flex-column justify-content-between align-items-center"
+      >
+        <div class="d-flex align-items-center justify-content-start w-100">
+          <span class="card-title">Chemicals</span>
+          <span *ngIf="chemical$ | async as datasource" class="card-sub-title">
+            There are {{ datasource.pageInfo.totalElements }} chemicals in total
+          </span>
+        </div>
+        <div class="d-flex justify-content-end w-100">
+          <div>
+            <span class="custom-create-btn" (click)="openAddChemicalModal()"
+              >+ Add new chemicals</span
+            >
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="card-body">
+      <div *ngIf="chemical$ | async as datasource">
+        <div class="table-responsive-lg">
+          <table class="table custom-table-striped">
+            <thead>
+              <tr class="fw-bold fs-6 text-gray-800">
+                <th class="w-25">Chemical Type</th>
+                <th class="w-25">Active Ingredient</th>
+                <th class="w-25">Name</th>
+                <th class="w-25">PHI(Days)</th>
+              </tr>
+            </thead>
+            <tbody>
+              <ng-container
+                *ngTemplateOutlet="
+                  loading.isLoading
+                    ? loadingTpmlt
+                    : loading.hasData
+                    ? dataTpmlt
+                    : emptyTpmlt;
+                  context: { $implicit: datasource }
+                "
+              >
+              </ng-container>
+
+              <ng-template #dataTpmlt let-datasource>
+                <tr *ngFor="let data of datasource.items">
+                  <td class="text-uppercase">{{ data.chemicalType }}</td>
+                  <td class="text-uppercase">{{ data.activeIngredient }}</td>
+                  <td class="text-uppercase">{{ data.name }}</td>
+                  <td>{{ data.preHarvestIntervalInDays }}</td>
+                </tr>
+              </ng-template>
+            </tbody>
+          </table>
+        </div>
+        <div
+          class="d-flex flex-sm-row flex-column justify-content-end table-paginator"
+        >
+          <div class="d-flex justify-content-end table-paginator__pagination">
+            <ngb-pagination
+              (pageChange)="onPageChange(pagingConfig.itemsPerPage, $event)"
+              [(page)]="pagingConfig.currentPage"
+              [collectionSize]="pagingConfig.itemCount"
+              [pageSize]="pagingConfig.itemsPerPage"
+              [maxSize]="3"
+            ></ngb-pagination>
+          </div>
+          <div
+            class="d-flex justify-content-end table-paginator__page-size-selector"
+          >
+            <span class="page-size-selector__title">Show records</span>
+            <select
+              class="page-size-selector__dropdown"
+              [value]="pagingConfig.itemsPerPage"
+              (change)="onPageChange($any($event.target).value, 1)"
+            >
+              <option
+                *ngFor="let pageSize of pageSizeOptions"
+                [value]="pageSize"
+              >
+                {{ pageSize }} rows
+              </option>
+            </select>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<ng-template #loadingTpmlt>
+  <td class="text-center p-5 fs-4" colspan="100% ">Loading...</td>
+</ng-template>
+<ng-template #emptyTpmlt>
+  <td class="text-center p-5 fs-4" colspan="100% ">No record found</td>
+</ng-template>

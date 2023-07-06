@@ -26,12 +26,12 @@ jobs:
           npm install -g @angular/cli
           npm install
           ng build
-
+        
       - name: Upload artifact for deployment job
         uses: actions/upload-artifact@v2
         with:
           name: node-app
-          path: .
+          path: dist/
 
   deploy:
     runs-on: ubuntu-latest
@@ -45,7 +45,7 @@ jobs:
         uses: actions/download-artifact@v2
         with:
           name: node-app
-
+          
       - name: 'Deploy to Azure Web App'
         id: deploy-to-webapp
         uses: azure/webapps-deploy@v2
@@ -53,4 +53,4 @@ jobs:
           app-name: 'demo-spa'
           slot-name: 'Production'
           publish-profile: ${{ secrets.AZUREAPPSERVICE_PUBLISHPROFILE_D16BA40D64F348A9BF13DEEAABECEEF8 }}
-          package: .
+          package: dist/

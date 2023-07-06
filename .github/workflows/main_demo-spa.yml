@@ -53,4 +53,4 @@ jobs:
           app-name: 'demo-spa'
           slot-name: 'Production'
           publish-profile: ${{ secrets.AZUREAPPSERVICE_PUBLISHPROFILE_D16BA40D64F348A9BF13DEEAABECEEF8 }}
-          package: dist/
+          package: .

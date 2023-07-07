@@ -1,26 +1,26 @@
-# WebSPA
+# Angular SPA
 
-This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 15.0.4.
+This repository contains an Angular application that is deployed to Azure using GitHub Actions. This README file provides instructions on how to run the application locally.
 
-## Development server
+### Live Demo
+You can also view a live demo of this Angular app hosted on Azure. Please note that if it's using a free service plan, it may take some time to wake the server up at the first-time access. Visit Demo [Link](https://demo-spa.azurewebsites.net/) to access the live demo.
 
-Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The application will automatically reload if you change any of the source files.
+## Development
 
-## Code scaffolding
+### Prerequisites
+Before running the Angular app locally, make sure you have the following software installed:
 
-Run `ng generate component component-name` to generate a new component. You can also use `ng generate directive|pipe|service|class|guard|interface|enum|module`.
+- Node.js (version 18 or higher)
+- Angular CLI
 
-## Build
+To run the Angular app locally, follow these steps:
+1. Install the dependencies:
+   `npm install`
+2. Start the local development server:
+   `ng serve`
+3. Open your browser and visit http://localhost:4200 to view the running application.
 
 Run `ng build` to build the project. The build artifacts will be stored in the `dist/` directory.
-
-## Running unit tests
-
-Run `ng test` to execute the unit tests via [Karma](https://karma-runner.github.io).
-
-## Running end-to-end tests
-
-Run `ng e2e` to execute the end-to-end tests via a platform of your choice. To use this command, you need to first add a package that implements end-to-end testing capabilities.
 
 ## Further help
 

@@ -11,9 +11,11 @@ import { HttpHeaderInterceptor } from './core/interceptors/http-header.intercept
 import { HttpErrorInterceptor } from './core/interceptors/http-error.interceptor';
 import { ToastNoAnimationModule, ToastrModule, ToastrService } from 'ngx-toastr';
 import { LoadingInterceptor } from './core/interceptors/http-loading.interceptor';
+import { LoadingService } from './core/services/loading.service';
+import { LoadingComponent } from './layout/Loading/loading.component';
 
 @NgModule({
-  declarations: [AppComponent],
+  declarations: [AppComponent, LoadingComponent],
   imports: [
     BrowserModule,
     BrowserAnimationsModule,
@@ -27,6 +29,12 @@ import { LoadingInterceptor } from './core/interceptors/http-loading.interceptor
   ],
 
   providers: [
+    LoadingService,
+    {
+      provide: HTTP_INTERCEPTORS,
+      useClass: LoadingInterceptor,
+      multi: true
+    },
     {
       provide: HTTP_INTERCEPTORS,
       useClass: HttpErrorInterceptor,
@@ -39,11 +47,6 @@ import { LoadingInterceptor } from './core/interceptors/http-loading.interceptor
       multi: true,
       deps: [],
     },
-    {
-      provide: HTTP_INTERCEPTORS,
-      useClass: LoadingInterceptor,
-      multi: true
-    }
   ],
   bootstrap: [AppComponent],
 })

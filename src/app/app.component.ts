@@ -9,6 +9,7 @@ import { LoadingService } from './core/services/loading.service';
 })
 export class AppComponent {
   title = 'WebSPA';
+  loading$ = this.loadingService.loading$;
 
-  constructor(public loadingService: LoadingService) {}
+  constructor(private loadingService: LoadingService) {}
 }
